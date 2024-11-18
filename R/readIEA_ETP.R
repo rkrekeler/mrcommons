@@ -8,9 +8,7 @@
 #' @importFrom tidyr drop_na pivot_longer extract
 #' @importFrom rlang sym
 
-readIEA_ETP <- function(subtype) {
-
-  region <- NULL
+readIEA_ETP <- function(subtype) { # nolint: object_name_linter.
 
   # nolint start
   subtypes <- list(
@@ -528,16 +526,16 @@ readIEA_ETP <- function(subtype) {
 
   file <- file.path("1.1", subtypes[[subtype]]$file)
 
-  col_names <- c("rownames", "2014", "2025", "2030", "2035", "2040", "2045", "2050", "2055", "2060")
-  col_types <- c("text", rep("numeric", length(col_names) - 1))
+  colNames <- c("rownames", "2014", "2025", "2030", "2035", "2040", "2045", "2050", "2055", "2060")
+  colTypes <- c("text", rep("numeric", length(colNames) - 1))
   tmp <- tibble()
   for (sheet in subtypes[[subtype]]$sheets) {
     for (scenario in names(subtypes[[subtype]]$scenarios)) {
       tmp <- bind_rows(
         tmp,
         read_xlsx(
-          path = file, sheet = sheet, col_names = col_names,
-          col_types = col_types, range = subtypes[[subtype]]$scenarios[[scenario]]
+          path = file, sheet = sheet, col_names = colNames,
+          col_types = colTypes, range = subtypes[[subtype]]$scenarios[[scenario]]
         ) %>%
           # add variable and unit columns
           bind_cols(subtypes[[subtype]]$rows) %>%
