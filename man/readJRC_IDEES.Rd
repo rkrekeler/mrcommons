@@ -16,6 +16,8 @@ readJRC_IDEES(subtype)
 \item \code{'MBunkers'}: read worksheets from the Bunkers files
 \item \code{'Residential'}: read worksheets from the Residential files
 \item \code{'Tertiary'}: read worksheets from the Tertiary (Services and Agriculture) files
+append \code{'_2021'} to get the updated data from 2021 (only available for some
+sectors)
 }}
 }
 \value{
@@ -28,5 +30,5 @@ Read the \href{https://data.jrc.ec.europa.eu/dataset/jrc-10110-10001/resource/f5
 \code{\link[=readSource]{readSource()}}
 }
 \author{
-Michaja Pehl, Falk Benke
+Michaja Pehl, Falk Benke, Robin Hasse
 }
